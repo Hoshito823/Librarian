@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/users', 'UserController@index');
+    Route::get('chat', 'MessageController@displayChat');
 });
 
 Auth::routes();
