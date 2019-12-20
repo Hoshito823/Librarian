@@ -39,3 +39,71 @@ body {
   background-color: rgba(0, 0, 0, 0.25);
 }
 
+
+/*Style Defenition of Messsage page*/
+.message-container-right {
+  text-align: right;
+}
+
+.message-container-left {
+  text-align: left;
+}
+
+.username {
+  margin-bottom: 1px;
+  margin-top: 10px;
+}
+
+.balloon1-left {
+  position: relative;
+  display: inline-block;
+  margin: 0.5em 0 0.5em 15px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+}
+
+.balloon1-left:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-right: 15px solid #e0edff;
+}
+
+.balloon1-left p {
+  margin: 0;
+  padding: 0;
+}
+
+.balloon1-right {
+  position: relative;
+  display: inline-block;
+  margin: 0.5em 15px 0.5em 0;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+}
+
+.balloon1-right:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-left: 15px solid #e0edff;
+}
+
+.balloon1-right p {
+  margin: 0;
+  padding: 0;
+}
