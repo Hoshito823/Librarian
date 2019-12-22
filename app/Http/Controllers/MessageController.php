@@ -24,6 +24,31 @@ class MessageController extends Controller
                 $conversation[] = $message;
             }
         }
-        return view ('messages.index', compact('conversation','me'));
+        return view ('messages.index', compact('conversation', 'me', 'you'));
     }
+    
+    //send message
+    public function send(Request $request) {
+        $me = Auth::user();
+        
+        //Why I need to change string to integer
+        $you = (int)$request->receiverId;
+        
+        //
+        $message = new Message;
+        $message->from_user_id = $me->id;
+        $message->to_user_id = $you;
+        $message->body = $request->body;
+        $message->save();
+        
+        //go back to previous page with sent data.
+        return back()->withInput();
+    }
+    
+    //back to previous page
+    public function back() {
+        return redirect ('/users');
+    }
+    
+    
 }

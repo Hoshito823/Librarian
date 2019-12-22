@@ -24,6 +24,26 @@
              </div>
           @endif
         @endforeach
+        
+        <div class="sendBox" style="position: sticky; bottom: 20px;">
+            <form action="{{ action('MessageController@send') }}" method="post" enctype="multipart/form-data">
+                <div class="input-group" style="margin-top:40px">
+                  <input type="text" class="form-control" name="body" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                  <input type="hidden" class="form-control" name="receiverId" value="{{ $you['id'] }}">
+                  <div class="input-group-append">
+                    <button class="btn btn-success" type="button">Sent</button>
+                  </div>
+                </div>
+                {{ csrf_field() }}
+            </form>
+            
+            <div style="margin-top: 10px; text-align: right;">
+                <a href="{{ action('MessageController@back') }}"><button type="button" class="btn btn-light">Back</button></a>
+            </div>
+            
+        </div>
+    
     </div>
+    
 </div>
 @endsection
