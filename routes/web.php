@@ -11,17 +11,25 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
+*/
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', 'BookController@index');
+    /*User Controller*/
     Route::get('/users', 'UserController@index');
+    /*Message Controller*/
     Route::get('/chat', 'MessageController@displayChat');
     Route::post('/send', 'MessageController@send');
     Route::get('/back', 'MessageController@back');
-});
+    /*Book Controller*/
+    Route::get('/register_page', 'BookController@registerPage');
+    Route::post('/book_register', 'BookController@register');
+    
+    });
 
 Auth::routes();
 

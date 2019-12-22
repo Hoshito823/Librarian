@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Auth;
 class MessageController extends Controller
 {
     public function displayChat(Request $request) {
+        
         //login user's info
         $me = Auth::user();
         $you = $request->all();
         //get all messages
         $messages = Message::all();
         $conversation = array();
-         
+        
         foreach($messages as $message){
             //get messages I send and receive, then push to conversation array.
             if (($message['from_user_id'] == $me['id'] && $message['to_user_id'] == (int)$you['id']) || ($message['from_user_id'] == (int)$you['id'] && $message['to_user_id'] == $me['id'])) {
@@ -34,7 +35,6 @@ class MessageController extends Controller
         //Why I need to change string to integer
         $you = (int)$request->receiverId;
         
-        //
         $message = new Message;
         $message->from_user_id = $me->id;
         $message->to_user_id = $you;
