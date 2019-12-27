@@ -16,4 +16,8 @@ class Book extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
     
+    public function tags() {
+        return $this->belongsToMany('App\Tag');
+    }
+    
 }

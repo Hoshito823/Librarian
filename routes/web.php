@@ -26,9 +26,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/send', 'MessageController@send');
     Route::get('/back', 'MessageController@back');
     /*Book Controller*/
-    Route::get('/register_page', 'BookController@registerPage');
-    Route::post('/book_register', 'BookController@register');
-    
+    Route::get('/bookregister', 'BookController@registerPage');
+    Route::post('/savebook', 'BookController@register');
     });
 
 Auth::routes();
