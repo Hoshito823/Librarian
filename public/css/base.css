@@ -107,3 +107,10 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.bookImage {
+  height: 340px;
+  width: 280px;
+  vertical-align: middle;
+  border-style: none;
+}
