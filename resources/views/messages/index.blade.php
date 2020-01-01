@@ -6,6 +6,7 @@
 <div class="container">
     <h2>Chat Room</h2>
     <div class="col-md-8 mx-auto">
+        <div id="message-container">
         @foreach($conversation as $message)
           @if($message->from_user_id == $me->id)
               {{-- Show My Messages --}}
@@ -24,14 +25,15 @@
              </div>
           @endif
         @endforeach
+        </div>
         
         <div class="sendBox" style="position: sticky; bottom: 20px;">
             <form action="{{ action('MessageController@send') }}" method="post" enctype="multipart/form-data">
                 <div class="input-group" style="margin-top:40px">
-                  <input type="text" class="form-control" name="body" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                  <input type="hidden" class="form-control" name="receiverId" value="{{ $you['id'] }}">
+                  <input type="text" id="inputText" class="form-control" name="body" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                  <input type="hidden" id="receiverId" class="form-control" name="receiverId" value="{{ $you['id'] }}">
                   <div class="input-group-append">
-                    <button class="btn btn-success" type="button">Sent</button>
+                    <button id="sendButton" class="btn btn-success" type="button">Send</button>
                   </div>
                 </div>
                 {{ csrf_field() }}
@@ -46,4 +48,11 @@
     </div>
     
 </div>
+
+<span id="js-getVariable" data-name="{{ $me->name }}"></span>
+
+{{-- import javascript for Ajax --}}
+<script src="{{ secure_asset('js/message.js') }}" defer></script>
+
+
 @endsection

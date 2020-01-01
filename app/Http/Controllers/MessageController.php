@@ -28,7 +28,7 @@ class MessageController extends Controller
         return view ('messages.index', compact('conversation', 'me', 'you'));
     }
     
-    //send message
+    /*send message
     public function send(Request $request) {
         $me = Auth::user();
         
@@ -44,11 +44,40 @@ class MessageController extends Controller
         //go back to previous page with sent data.
         return back()->withInput();
     }
+    */
     
     //back to previous page
     public function back() {
         return redirect ('/users');
     }
     
+    
+    
+    //=================== Below is Ajax API return function ===================
+    /*
+     1.取得したリクエストデータを呼び出し、メッセージデータとして Message モデルに登録する
+    
+    
+    */
+    public function create(Request $request) {
+        
+        /*get message from request*/
+        $sendText = $request->text;
+        // $receiver = $request->receiverId;
+        
+        // $me = Auth::user();
+        
+        // //Why I need to change string to integer
+        // //$you = (int)$request->receiverId;
+        
+        // $message = new Message;
+        // $message->from_user_id = $me->id;
+        // $message->to_user_id = (int)$request->receiverId;;
+        // $message->body = $request->body;
+        // $message->save();
+        
+        //go back to previous page with sent data
+        return response($sendText, 200);
+    }
     
 }
