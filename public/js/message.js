@@ -36,6 +36,12 @@
         /*Clear Input box*/
         $('#inputText').val("");
         
+        alert('Move to Buttom');
+        /*Move to buttom page.*/
+        var target = $('#backButton');
+        $(window).scrollTop(target.offset().top);
+    
+        
       }).fail(function(data, status, err) {
           alert('failed');
           alert(err);
