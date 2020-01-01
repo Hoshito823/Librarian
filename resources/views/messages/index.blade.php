@@ -49,7 +49,7 @@
     
 </div>
 
-<span id="js-getVariable" data-name="{{ $me->name }}"></span>
+<span id="js-getVariable" data-id="{{ $me->id }}" data-name="{{ $me->name }}"></span>
 
 {{-- import javascript for Ajax --}}
 <script src="{{ secure_asset('js/message.js') }}" defer></script>
