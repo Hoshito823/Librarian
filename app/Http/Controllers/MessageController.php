@@ -47,7 +47,7 @@ class MessageController extends Controller
     
     //back to previous page
     public function back() {
-        return redirect ('/users');
+        return redirect ('/');
     }
     
     

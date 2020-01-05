@@ -70,4 +70,8 @@ class BookController extends Controller
         return redirect('/');
     }
     
+    public function back() {
+       return redirect('/');
+    }
+    
 }

@@ -40,7 +40,7 @@
             </form>
             
             <div id="backButton" style="margin-top: 10px; text-align: right;">
-                <a href="{{ action('MessageController@back') }}"><button type="button" class="btn btn-light">Back</button></a>
+                <a href="{{ action('BookController@back') }}"><button type="button" class="btn btn-light">Back</button></a>
             </div>
             
         </div>

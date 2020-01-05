@@ -24,10 +24,10 @@ Route::group(['middleware' => 'auth'], function () {
     /*Message Controller*/
     Route::get('/chat', 'MessageController@displayChat');
     Route::post('/send', 'MessageController@send');
-    Route::get('/back', 'MessageController@back');
     /*Book Controller*/
     Route::get('/bookregister', 'BookController@registerPage');
     Route::post('/savebook', 'BookController@register');
+    Route::get('/back', 'BookController@back');
     });
 
 Auth::routes();

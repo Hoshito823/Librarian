@@ -6,8 +6,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2>Available Books List</h2>
-
+                
+                <div>
+                    <h2 style="display:inline;">Available Books List</h2>
+                    <a class="offset-md-3" href="{{ action('BookController@registerPage') }}"><button type="button" class="btn btn-primary">Book Register</button></a>
+                </div>
+    
                 <div class="row">
                     <div class="posts">
                         <hr color="#c0c0c0">
@@ -48,10 +52,6 @@
                         @endforeach
                     </div>
                 </div>
-            
-            <div>
-                <a href="{{ action('BookController@registerPage') }}"><button type="button" class="btn btn-primary">Book Register</button></a>
-            </div>
     
             </div>
             
