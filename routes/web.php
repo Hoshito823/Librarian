@@ -18,7 +18,9 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => 'auth'], function () {
+    /*Display all books or searched Result*/
     Route::get('/', 'BookController@index');
+    Route::post('/', 'BookController@index');
     /*User Controller*/
     Route::get('/users', 'UserController@index');
     /*Message Controller*/

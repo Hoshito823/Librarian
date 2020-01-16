@@ -27,7 +27,7 @@
         @endforeach
         </div>
         
-        <div class="sendBox" style="position: sticky; bottom: 20px;">
+        <div class="sendBox" style="position: sticky; bottom: 20px; background-color: dark">
             <form action="{{ action('MessageController@send') }}" method="post" enctype="multipart/form-data">
                 <div class="input-group" style="margin-top:40px">
                   <input type="text" id="inputText" class="form-control" name="body" placeholder="" aria-label="" aria-describedby="basic-addon1">

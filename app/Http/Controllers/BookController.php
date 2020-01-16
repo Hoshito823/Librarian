@@ -12,24 +12,37 @@ use App\Book_tag;
 
 class BookController extends Controller
 {
-    //Display all boooks
-    public function index() {
-        $books = Book::all();
-        return view ('books.index', compact('books'));
+    // ▼ Display all boooks & Search function
+    public function index(Request $request) {
+        $searchText = $request->searchText;
+        
+        if ($searchText != '') {
+            //when you search some book name, display result of books search.
+            $query = Book::query();
+            $books = $query->where('name', 'like', '%'.$searchText.'%')->get();
+            return view ('books.index', compact('books', 'searchText'));
+        } else {
+            //display all books
+            $books = Book::all();
+            return view ('books.index', compact('books'));
+        }
+        
+        
+        
     }
     
-    //Disaplay books detail
+    // ▼ Disaplay books detail
     public function detail(Request $request) {
         
     }
     
-    //display book register page
+    // ▼ Display book register page
     public function registerPage() {
         $tags = Tag::all();
         return view('books.register', compact('tags'));
     }
     
-    //register books detail
+    // ▼ Register books detail
     public function register(Request $request) {
         
         $this->validate($request, Book::$rules);
@@ -70,6 +83,7 @@ class BookController extends Controller
         return redirect('/');
     }
     
+    // ▼ Return top page
     public function back() {
        return redirect('/');
     }

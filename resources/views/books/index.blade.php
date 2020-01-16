@@ -8,8 +8,17 @@
             <div class="col-md-8 mx-auto">
                 
                 <div>
-                    <h2 style="display:inline;">Available Books List</h2>
-                    <a class="offset-md-3" href="{{ action('BookController@registerPage') }}"><button type="button" class="btn btn-primary">Book Register</button></a>
+                    <h2 class="col-md-6" style="display:inline;">Available Books List</h2>
+                    <a class="col-md-2 offset-md-2" href="{{ action('BookController@registerPage') }}"><button type="button" class="btn btn-primary">Book Register</button></a>
+                    
+                    <div style="margin-top: 15px;">
+                        <form class="form-inline" action="{{ action('BookController@index') }}" method="post" enctype="multipart/form-data">
+                          <label class="sr-only" for="inlineFormInputName2">Book Title</label>
+                          <input type="text" class="form-control mb-2 mr-sm-2 col-md-6" id="inlineFormInputName2" placeholder="Book Title" name="searchText">
+                          <button type="submit" class="btn btn-primary mb-2 col-md-2 offset-md-2">Search</button>
+                          {{ csrf_field() }}
+                        </form>
+                    </div>
                 </div>
     
                 <div class="row">
