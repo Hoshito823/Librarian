@@ -19,16 +19,13 @@ class BookController extends Controller
         if ($searchText != '') {
             //when you search some book name, display result of books search.
             $query = Book::query();
-            $books = $query->where('name', 'like', '%'.$searchText.'%')->get();
+            $books = $query->where('name', 'like', '%'.$searchText.'%')->paginate(7);
             return view ('books.index', compact('books', 'searchText'));
         } else {
             //display all books
-            $books = Book::all();
+            $books = Book::paginate(7);
             return view ('books.index', compact('books'));
         }
-        
-        
-        
     }
     
     // ▼ Disaplay books detail
@@ -42,8 +39,8 @@ class BookController extends Controller
         return view('books.register', compact('tags'));
     }
     
-    // ▼ Register books detail
-    public function register(Request $request) {
+    // ▼ Register book
+    public function registerBook(Request $request) {
         
         $this->validate($request, Book::$rules);
         
@@ -57,6 +54,9 @@ class BookController extends Controller
         } else {
             $book->image_path = null;
         }
+        
+        //save book status(Dedfault Status = Available)
+        $book->status = 1;
         
         unset($form['_token']);
         unset($form['image']);
@@ -80,6 +80,24 @@ class BookController extends Controller
             $book_tag->save();
         }
         
+        session()->flash('successMessage', 'Registered Successfuly');
+        return redirect('/');
+    }
+    
+    // ▼ Borrow Book
+    public function borrow(Request $request) {
+        $book = Book::find($request->id);
+        $borrower = Auth::user();
+        
+        //Change availability status 1(available) → 0(to be available).
+        $book->status = 0;
+        
+        //Register borrower's user_id
+        $book->lend_user_id = $borrower->id;
+        
+        $book->save();
+        
+        session()->flash('successMessage', "Your request is accepted ! Let's contact to book's owner.");
         return redirect('/');
     }
     

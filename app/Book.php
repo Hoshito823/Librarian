@@ -20,4 +20,8 @@ class Book extends Model
         return $this->belongsToMany('App\Tag');
     }
     
+    public function borrower() {
+        return $this->belongsTo('App\User', 'user_id');
+    }
+    
 }

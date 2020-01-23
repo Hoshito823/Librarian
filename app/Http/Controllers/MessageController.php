@@ -50,8 +50,6 @@ class MessageController extends Controller
         return redirect ('/');
     }
     
-    
-    
     //=================== Below is Ajax API return function ===================
 
     public function create(Request $request) {

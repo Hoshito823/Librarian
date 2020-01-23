@@ -8,7 +8,7 @@
             <div class="col-md-8 mx-auto">
                 <h2>Register your book information</h2>
             
-                <form action="{{ action('BookController@register') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ action('BookController@registerBook') }}" method="post" enctype="multipart/form-data">
                     
                     @if (count($errors) > 0)
                         <ul>

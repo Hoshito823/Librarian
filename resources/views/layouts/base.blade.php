@@ -26,6 +26,10 @@
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込む --}}
         <link href="{{ secure_asset('css/base.css') }}" rel="stylesheet">
+        
+        <!-- Using Toastr to popup alert. -->
+        @yield('toastr')
+        
     </head>
     <body>
         <div id="app">
